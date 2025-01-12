@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from './components/Button';
-
 import logo from './assets/mainback.png';
 import first from './assets/a.png';
 import second from './assets/b.jpeg';
@@ -11,10 +10,18 @@ import sixth from './assets/f.jpeg';
 import seventh from './assets/i.png';
 
 const CandourLanding = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="flex items-center justify-between px-4 md:px-8 py-4 max-w-7xl mx-auto">
+      <nav className="relative flex items-center justify-between px-4 md:px-8 py-4 max-w-7xl mx-auto bg-white z-50">
         <div className="flex items-center">
           <img src={seventh} alt="Candour Logo" className="h-12 w-auto"/>
         </div>
@@ -37,12 +44,54 @@ const CandourLanding = () => {
             Supplier
           </Button>
         </div>
-        {/* Mobile menu button */}
-        <button className="md:hidden p-2">
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+        {/* Mobile Navigation */}
+        <div className="md:hidden relative">
+          {/* Mobile menu button */}
+          <button 
+            className="p-2"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            <svg 
+              className="h-6 w-6" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              {isMobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+
+          {/* Mobile Menu Dropdown */}
+          {isMobileMenuOpen && (
+            <div 
+              className="absolute top-full right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50"
+              onClick={(e) => e.stopPropagation()}
+            >
+          <a href="#" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Product</a>
+          <a href="#" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Articles</a>
+          <a href="#" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">About Us</a>
+          <div className="px-4 py-2 space-y-2">
+            <Button 
+              variant="default" 
+              className="w-full bg-black text-white text-sm"
+            >
+              Buyer
+            </Button>
+            <Button 
+              variant="outline" 
+              className="w-full border-black text-black text-sm"
+            >
+              Supplier
+            </Button>
+          </div>
+        </div>
+          )}
+          </div>
       </nav>
 
       {/* Hero Section */}
