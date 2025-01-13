@@ -10,11 +10,11 @@ const Layout = ({ children }) => {
       <Sidebar />
 
       {/* Main Content */}
-      <div className="ml-64">
+      <div className="md:ml-64">
         {/* Top Header */}
         <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
           <div className="flex items-center space-x-4">
-            <h1 className="text-lg font-semibold">Procurement</h1>
+            <h1 className="text-lg font-semibold md:block hidden">Procurement</h1>
           </div>
           <div className="flex items-center space-x-4">
             <button className="relative p-2 hover:bg-gray-100 rounded-full">

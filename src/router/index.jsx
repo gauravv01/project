@@ -13,8 +13,17 @@ const SupplierListing=lazy(()=>import('../pages/Supplier/Listing'));
 const SupplierDeals=lazy(()=>import('../pages/Supplier/SupplierDeals'));
 const SupplierUploadCatalogue=lazy(()=>import('../pages/Supplier/UploadCatalogue'));
 const SupplierViewCatalogue=lazy(()=>import('../pages/Supplier/ViewCatalogue'));
+const SupplierCreateDeal=lazy(()=>import('../pages/Supplier/CreateLiveDeal'));
 
+// buyer settings
 
+// se=upplier settings
+const SupplierSeetingsProfile=lazy(()=>import('../pages/Supplier/settings/Profile'));
+const SupplierSettingsBilling=lazy(()=>import('../pages/Supplier/settings/Billings'));
+const SupplierSettingsAccount=lazy(()=>import('../pages/Supplier/settings/Accounts'));
+const SupplierSettingsNotifications=lazy(()=>import('../pages/Supplier/settings/Notifications'));
+const SupplierSettingsSecurity=lazy(()=>import('../pages/Supplier/settings/Security'));
+const SupplierSettingsPrivacy=lazy(()=>import('../pages/Supplier/settings/Privacy'));
 
 const Router=()=>{
     return (
@@ -31,6 +40,15 @@ const Router=()=>{
             <Route path="/supplier/upload" element={<SupplierUploadCatalogue/>}/>
             <Route path="/supplier/view" element={<SupplierViewCatalogue/>}/>
             <Route path="/supplier/deals" element={<SupplierDeals/>}/>
+            <Route path="/supplier/createdeal" element={<SupplierCreateDeal/>}/>
+
+            {/* supplier settings */}
+            <Route path='/supplier/settings/profile' element={<SupplierSeetingsProfile/>}/>
+            <Route path='/supplier/settings/privacy' element={<SupplierSettingsPrivacy/>}/>
+            <Route path='/supplier/settings/security' element={<SupplierSettingsSecurity/>}/>
+            <Route path='/supplier/settings/notifications' element={<SupplierSettingsNotifications/>}/>
+            <Route path='/supplier/settings/billing' element={<SupplierSettingsBilling/>}/>
+            <Route path='/supplier/settings/account' element={<SupplierSettingsAccount/>}/>
         </Routes>
         </Suspense>
     )

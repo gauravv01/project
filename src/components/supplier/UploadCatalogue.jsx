@@ -20,21 +20,25 @@ const UploadCatalogue = () => {
   };
 
   return (
-    <div className="p-8 max-w-5xl mx-auto">
-      <h1 className="text-2xl font-semibold mb-8">Upload your catalgue</h1>
+    <div className="p-4 sm:p-6 lg:p-8 max-w-5xl mx-auto">
+      <h1 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8">
+        Upload your catalgue
+      </h1>
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         {/* Upload Area */}
-        <div className="bg-gray-100 rounded-lg aspect-square flex flex-col items-center justify-center">
-          <Upload className="w-12 h-12 text-gray-400 mb-4" />
-          <p className="text-gray-600 mb-6">Drop your tender here</p>
-          <button className="px-6 py-2 bg-black text-white rounded-md">
+        <div className="bg-gray-100 rounded-lg aspect-square flex flex-col items-center justify-center p-4">
+          <Upload className="w-8 h-8 sm:w-12 sm:h-12 text-gray-400 mb-4" />
+          <p className="text-sm sm:text-base text-gray-600 mb-6 text-center">
+            Drop your tender here
+          </p>
+          <button className="px-4 sm:px-6 py-2 bg-black text-white rounded-md text-sm sm:text-base">
             Upload
           </button>
         </div>
 
         {/* Form Fields */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Product name
@@ -44,7 +48,7 @@ const UploadCatalogue = () => {
               name="productName"
               value={formData.productName}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-200 rounded-md"
+              className="w-full p-2 sm:p-3 border border-gray-200 rounded-md text-sm sm:text-base"
               placeholder="Product name"
             />
           </div>
@@ -58,7 +62,7 @@ const UploadCatalogue = () => {
               name="category"
               value={formData.category}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-200 rounded-md"
+              className="w-full p-2 sm:p-3 border border-gray-200 rounded-md text-sm sm:text-base"
               placeholder="Product name"
             />
           </div>
@@ -71,7 +75,7 @@ const UploadCatalogue = () => {
               name="description"
               value={formData.description}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-200 rounded-md"
+              className="w-full p-2 sm:p-3 border border-gray-200 rounded-md text-sm sm:text-base"
               rows={4}
               placeholder="Some description of the item."
             />
@@ -81,8 +85,8 @@ const UploadCatalogue = () => {
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Price per unit
             </label>
-            <div className="flex items-center space-x-2">
-              <div className="flex-none w-32">
+            <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:space-x-2">
+              <div className="w-full sm:w-32 flex-none">
                 <div className="flex items-center">
                   <span className="text-gray-500 mr-2">£</span>
                   <input
@@ -90,7 +94,7 @@ const UploadCatalogue = () => {
                     name="priceValue"
                     value={formData.priceValue}
                     onChange={handleChange}
-                    className="w-full p-2 border border-gray-200 rounded-md"
+                    className="w-full p-2 sm:p-3 border border-gray-200 rounded-md text-sm sm:text-base"
                     placeholder="400"
                   />
                 </div>
@@ -101,7 +105,7 @@ const UploadCatalogue = () => {
                 name="priceUnit"
                 value={formData.priceUnit}
                 onChange={handleChange}
-                className="w-24 p-2 border border-gray-200 rounded-md"
+                className="w-full sm:w-24 p-2 sm:p-3 border border-gray-200 rounded-md text-sm sm:text-base"
                 placeholder="500"
               />
             </div>
@@ -115,16 +119,17 @@ const UploadCatalogue = () => {
               name="stockAvailability"
               value={formData.stockAvailability}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-200 rounded-md"
+              className="w-full p-2 sm:p-3 border border-gray-200 rounded-md text-sm sm:text-base"
             >
               <option value="Available">Available</option>
               <option value="Out of Stock">Out of Stock</option>
               <option value="Limited">Limited</option>
             </select>
           </div>
-          <button className="px-4 py-2 bg-black text-white rounded">
-          Upload
-        </button>
+
+          <button className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-black text-white rounded text-sm sm:text-base">
+            Upload
+          </button>
         </div>
       </div>
     </div>

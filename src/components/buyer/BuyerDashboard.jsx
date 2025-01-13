@@ -77,42 +77,77 @@ const ProcurementDashboard = () => {
     }
   ];
 
+  const StatCard = ({ title, value, trend }) => (
+    <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm">
+      <div className="text-xl sm:text-2xl font-bold">{value}</div>
+      <div className="text-sm text-gray-500">{title}</div>
+      <div className="text-xs text-gray-400 mt-1">{trend}</div>
+    </div>
+  );
+
+  const UserCard = ({ user }) => (
+    <div className="flex items-start space-x-3">
+      <img src={user.image} alt="" className="w-8 h-8 rounded-full flex-shrink-0" />
+      <div className="min-w-0">
+        <div className="font-medium text-sm sm:text-base truncate">{user.name}</div>
+        <div className="text-xs sm:text-sm text-gray-500 truncate">{user.email}</div>
+      </div>
+    </div>
+  );
+
+  const SupplierCard = ({ supplier, actionLabel }) => (
+    <div className="flex items-center justify-between">
+      <div className="flex items-center space-x-3 min-w-0">
+        <img src={supplier.image} alt="" className="w-8 h-8 rounded-full flex-shrink-0" />
+        <div className="min-w-0">
+          <div className="font-medium text-sm sm:text-base truncate">{supplier.name}</div>
+          <div className="text-xs sm:text-sm text-gray-500 truncate">{supplier.match}</div>
+        </div>
+      </div>
+      <button className="ml-2 px-3 py-1 text-xs sm:text-sm bg-black text-white rounded-md flex-shrink-0">
+        {actionLabel}
+      </button>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Main Content */}
-      <div className="p-8">
-        <h1 className="text-2xl font-semibold mb-8">Welcome to your Procurement space.</h1>
+      <div className="p-4 sm:p-6 lg:p-8">
+        <h1 className="text-xl sm:text-2xl font-semibold mb-6 lg:mb-8">
+          Welcome to your Procurement space.
+        </h1>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-4 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-lg shadow-sm">
-            <div className="text-2xl font-bold">£10,000.00</div>
-            <div className="text-sm text-gray-500">Value of goods procured</div>
-            <div className="text-xs text-gray-400 mt-1">+5% month over month</div>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm">
-            <div className="text-2xl font-bold">24</div>
-            <div className="text-sm text-gray-500">Active Listings</div>
-            <div className="text-xs text-gray-400 mt-1">+3.5% month over month</div>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm">
-            <div className="text-2xl font-bold">10</div>
-            <div className="text-sm text-gray-500">Completed Deals</div>
-            <div className="text-xs text-gray-400 mt-1">+15% month over month</div>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm">
-            <div className="text-2xl font-bold">5</div>
-            <div className="text-sm text-gray-500">In-progress Deals</div>
-            <div className="text-xs text-gray-400 mt-1">+8% month over month</div>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6 lg:mb-8">
+          <StatCard 
+            title="Value of goods procured"
+            value="£10,000.00"
+            trend="+5% month over month"
+          />
+          <StatCard 
+            title="Active Listings"
+            value="24"
+            trend="+3.5% month over month"
+          />
+          <StatCard 
+            title="Completed Deals"
+            value="10"
+            trend="+15% month over month"
+          />
+          <StatCard 
+            title="In-progress Deals"
+            value="5"
+            trend="+8% month over month"
+          />
         </div>
 
-        <div className="grid grid-cols-3 gap-6">
-          {/* Chart Section */}
-          <div className="col-span-2 bg-white p-6 rounded-lg shadow-sm">
-            <h2 className="text-lg font-semibold mb-4">Daily top sellers</h2>
+        {/* Chart and Lists Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 mb-4 lg:mb-6">
+          {/* Chart */}
+          <div className="lg:col-span-2 bg-white p-4 sm:p-6 rounded-lg shadow-sm">
+            <h2 className="text-base sm:text-lg font-semibold mb-2">Daily top sellers</h2>
             <div className="text-sm text-gray-500 mb-4">Growth on a monthly basis</div>
-            <div className="h-64">
+            <div className="h-48 sm:h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={data}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
@@ -131,34 +166,22 @@ const ProcurementDashboard = () => {
             </div>
           </div>
 
-          {/* Trending and Potential Matches */}
-          <div className="space-y-6">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
+          {/* Trending and Matches */}
+          <div className="space-y-4 lg:space-y-6">
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm">
               <h3 className="font-semibold mb-4">Trending Live Deals</h3>
               <div className="space-y-4">
                 {trendingDeals.map((deal) => (
-                  <div key={deal.id} className="flex items-start space-x-3">
-                    <img src={deal.image} alt={deal.name} className="w-8 h-8 rounded-full" />
-                    <div>
-                      <div className="font-medium">{deal.name}</div>
-                      <div className="text-sm text-gray-500">{deal.email}</div>
-                    </div>
-                  </div>
+                  <UserCard key={deal.id} user={deal} />
                 ))}
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm">
               <h3 className="font-semibold mb-4">Potential Matches</h3>
               <div className="space-y-4">
                 {potentialMatches.map((match) => (
-                  <div key={match.id} className="flex items-start space-x-3">
-                    <img src={match.image} alt={match.name} className="w-8 h-8 rounded-full" />
-                    <div>
-                      <div className="font-medium">{match.name}</div>
-                      <div className="text-sm text-gray-500">{match.email}</div>
-                    </div>
-                  </div>
+                  <UserCard key={match.id} user={match} />
                 ))}
               </div>
             </div>
@@ -166,66 +189,42 @@ const ProcurementDashboard = () => {
         </div>
 
         {/* Suppliers Grid */}
-        <div className="grid grid-cols-3 gap-6 mt-6">
-          {/* Favourite Suppliers */}
-          <div className="bg-white p-6 rounded-lg shadow-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+          <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm">
             <h3 className="font-semibold mb-4">Favourite Suppliers</h3>
             <div className="space-y-4">
               {suppliers.map((supplier) => (
-                <div key={supplier.id} className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <img src={supplier.image} alt={supplier.name} className="w-8 h-8 rounded-full" />
-                    <div>
-                      <div className="font-medium">{supplier.name}</div>
-                      <div className="text-sm text-gray-500">{supplier.match}</div>
-                    </div>
-                  </div>
-                  <button className="px-3 py-1 text-sm bg-black text-white rounded-md">
-                    Chat
-                  </button>
-                </div>
+                <SupplierCard 
+                  key={supplier.id} 
+                  supplier={supplier} 
+                  actionLabel="Chat"
+                />
               ))}
             </div>
           </div>
 
-          {/* Suppliers match */}
-          <div className="bg-white p-6 rounded-lg shadow-sm">
+          <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm">
             <h3 className="font-semibold mb-4">Suppliers match%</h3>
             <div className="space-y-4">
               {suppliers.map((supplier) => (
-                <div key={supplier.id} className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <img src={supplier.image} alt={supplier.name} className="w-8 h-8 rounded-full" />
-                    <div>
-                      <div className="font-medium">{supplier.name}</div>
-                      <div className="text-sm text-gray-500">{supplier.match}</div>
-                    </div>
-                  </div>
-                  <button className="px-3 py-1 text-sm bg-black text-white rounded-md">
-                    Connect
-                  </button>
-                </div>
+                <SupplierCard 
+                  key={supplier.id} 
+                  supplier={supplier} 
+                  actionLabel="Connect"
+                />
               ))}
             </div>
           </div>
 
-          {/* Suppliers you may have missed */}
-          <div className="bg-white p-6 rounded-lg shadow-sm">
+          <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm">
             <h3 className="font-semibold mb-4">Suppliers you may have missed</h3>
             <div className="space-y-4">
               {suppliers.map((supplier) => (
-                <div key={supplier.id} className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <img src={supplier.image} alt={supplier.name} className="w-8 h-8 rounded-full" />
-                    <div>
-                      <div className="font-medium">{supplier.name}</div>
-                      <div className="text-sm text-gray-500">{supplier.match}</div>
-                    </div>
-                  </div>
-                  <button className="px-3 py-1 text-sm bg-black text-white rounded-md">
-                    Connect
-                  </button>
-                </div>
+                <SupplierCard 
+                  key={supplier.id} 
+                  supplier={supplier} 
+                  actionLabel="Connect"
+                />
               ))}
             </div>
           </div>
