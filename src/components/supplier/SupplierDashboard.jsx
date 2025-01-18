@@ -5,12 +5,12 @@ import supplierProduct from '../../assets/images/supplierProduct.png';
 
 const SupplierDashboard = () => {
   const revenueData = [
-    { day: '24', value: 45000 },
-    { day: '25', value: 46000 },
-    { day: '26', value: 47500 },
-    { day: '27', value: 48000 },
+    { day: '24', value: 25000 },
+    { day: '25', value: 30000 },
+    { day: '26', value: 29500 },
+    { day: '27', value: 34000 },
     { day: '28', value: 49500 },
-    { day: '29', value: 51000 },
+    { day: '29', value: 38000 },
     { day: '30', value: 55000 }
   ];
 
@@ -198,7 +198,8 @@ const SupplierDashboard = () => {
           {/* Revenue Chart */}
           <div className="lg:col-span-2 bg-white rounded-lg p-4 sm:p-6">
             <h3 className="text-base sm:text-lg font-semibold mb-1">Monthly revenue growth</h3>
-            <p className="text-xs sm:text-sm text-gray-500 mb-4">Growth on a monthly basis</p>
+            <div className='p-2 rounded-lg shadow-xl z-50'>
+            <p className="text-xs sm:text-sm  mb-4 p-2">Growth on a monthly basis</p>
             <div className="h-48 sm:h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={revenueData}>
@@ -215,6 +216,7 @@ const SupplierDashboard = () => {
                   />
                 </LineChart>
               </ResponsiveContainer>
+            </div>
             </div>
           </div>
 

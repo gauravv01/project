@@ -74,21 +74,27 @@ const FindListings = () => {
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 sm:gap-0 mb-6 sm:mb-8">
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center flex-1 gap-4 sm:gap-0 max-w-2xl">
             <div className="relative flex-1 sm:mr-4">
+            
+              <div className='relative flex'>
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Buyers looking for white goods"
-                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg"
+                placeholder="Search Listings"
+                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg "
               />
+              <button className='absolute right-0 bg-black h-full rounded-r-lg px-2'>
+              <Search className='w-6 h-4 text-white'/>
+              </button>
+              </div>
             </div>
             <div className="flex gap-4">
               <button className="flex items-center px-3 py-2 border border-gray-200 rounded-lg">
                 <Filter className="w-5 h-5 mr-2" />
                 Filter
               </button>
-              <button className="px-4 py-2 bg-black text-white rounded-lg">
+              {/* <button className="px-4 py-2 bg-black text-white rounded-lg">
                 Search
-              </button>
+              </button> */}
             </div>
           </div>
 

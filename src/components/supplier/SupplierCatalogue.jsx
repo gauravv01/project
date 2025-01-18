@@ -65,12 +65,17 @@ const SupplierCatalogue = () => {
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 sm:gap-0 mb-6 sm:mb-8">
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center flex-1 gap-4 sm:gap-0 max-w-2xl">
             <div className="relative flex-1 sm:mr-4">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Search catalogue"
-                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg"
-              />
+                <div className='relative flex'>
+                           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                           <input
+                             type="text"
+                             placeholder="Search Catalogue"
+                             className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg "
+                           />
+                           <button className='absolute right-0 bg-black h-full rounded-r-lg px-2'>
+                           <Search className='w-6 h-4 text-white'/>
+                           </button>
+                           </div>
             </div>
             <div className="flex gap-4">
               <button className="flex items-center px-3 py-2 border border-gray-200 rounded-lg">
