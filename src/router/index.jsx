@@ -30,6 +30,8 @@ const BuyerSettingsProfile=lazy(()=>import('../pages/Buyer/settings/Profile'));
 const BuyerSettingsSecurity=lazy(()=>import('../pages/Buyer/settings/Security'));
 const BuyerSettingsAccount=lazy(()=>import('../pages/Buyer/settings/Accounts'));
 const BuyerSettingsNotifications=lazy(()=>import('../pages/Buyer/settings/Notifications'));
+const BuyerSettingsPrivacy=lazy(()=>import('../pages/Buyer/settings/Privacy'));
+const BuyerSettingsBillings=lazy(()=>import('../pages/Buyer/settings/Billings'));
 
 const Router=()=>{
     return (
@@ -61,6 +63,8 @@ const Router=()=>{
             <Route path='/buyer/settings/account' element={<BuyerSettingsAccount/>}/>
             <Route path='/buyer/settings/security' element={<BuyerSettingsSecurity/>}/>
             <Route path='/buyer/settings/notifications' element={<BuyerSettingsNotifications/>}/>
+            <Route path='/buyer/settings/billing' element={<BuyerSettingsBillings/>}/>
+            <Route path='/buyer/settings/privacy' element={<BuyerSettingsPrivacy/>}/>
         </Routes>
         </Suspense>
     )

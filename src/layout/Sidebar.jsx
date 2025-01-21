@@ -81,6 +81,16 @@ const Sidebar = () => {
             label: 'Security',
             path: '/buyer/settings/security'
           },
+          {
+            icon: CreditCard,
+            label: 'Billing and payments',
+            path: '/buyer/settings/billing'
+          },
+          {
+            icon: Lock,
+            label: 'Privacy settings',
+            path: '/buyer/settings/privacy'
+          }
        
         ]
       }
