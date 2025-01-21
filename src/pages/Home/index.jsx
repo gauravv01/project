@@ -10,6 +10,8 @@ import fifith from '../../assets/images/e.jpeg';
 import sixth from '../../assets/images/f.jpeg';
 import seventh from '../../assets/images/i.png';
 
+const solutions=["B2B Matchmaking","Tender Plus Feature","AI Enabled Search","Live Deals Tracker"]
+
 const CandourLanding = () => {
     const navigate = useNavigate();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -144,11 +146,14 @@ const CandourLanding = () => {
 
             <div  ref={solutionsref} className="max-w-6xl mx-auto px-4 md:px-8 mb-20">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Solutions</h2>
-                <p className="text-gray-600 text-lg mb-12">
+                <p className="text-gray-600 text-lg mb-6">
                     Candour aims to solve your biggest time and money challenges.
                 </p>
+                <div className='flex flex-col md:flex-row items-start md:items-center gap-3 md:justify-between mb-20'>
+                {solutions.map((solution,index)=> <div key={index} className='bg-white shadow-xl rounded-xl px-6 py-10 flex items-center justify-center fot-medium text-lg h-[120px] w-[190px]'>{solution}</div>) }
+                </div>
                 <div className="max-w-6xl mx-auto px-4 md:px-8 mb-20">
-               <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">
+               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">
                    Improving efficiencies Is Our Mission
                </h2>
                <p className="text-gray-600 text-center text-lg md:text-xl mb-16 max-w-3xl mx-auto">
@@ -156,29 +161,23 @@ const CandourLanding = () => {
                </p>
 
                <div className="space-y-16">
-                   <div className="flex flex-col md:flex-row items-start md:items-center space-y-6 md:space-y-0 md:space-x-8">
-                       <div className="w-16 h-16 bg-[#1a4fba] rounded-full flex items-center justify-center flex-shrink-0">
-                           <img src={fourth} alt="" className="w-8 h-8"/>
-                       </div>
-                       <p className="flex-1 text-lg md:text-xl">
+                   <div className="flex  flex-row items-start items-center space-y-6 space-y-0 md:space-x-8 space-x-2">
+                           <img src={fourth} alt="" className="w-24 h-24  rounded-full"/>
+                       <p className="flex-1 text-sm sm:text-base md:text-xl">
                            The people within Candour all strive for the same change, we reflect the world around us where diversity and inclusion is praised and everyone is empowered to be authentic.
                        </p>
                    </div>
 
-                   <div className="flex flex-col md:flex-row items-start md:items-center space-y-6 md:space-y-0 md:space-x-8">
-                       <div className="w-16 h-16 bg-[#1a4fba] rounded-full flex items-center justify-center flex-shrink-0">
-                           <img src={fifith} alt="" className="w-8 h-8"/>
-                       </div>
-                       <p className="flex-1 text-lg md:text-xl">
+                   <div className="flex  flex-row items-start items-center space-y-6 space-y-0 md:space-x-8 space-x-2">
+                           <img src={fifith} alt="" className="w-24 h-24  rounded-full"/>
+                       <p className="flex-1 text-sm sm:text-base md:text-xl">
                            Every connection matters to us. Candour is grounded on honesty as we believe this is a key component to creating long lasting partnerships.
                        </p>
                    </div>
 
-                   <div className="flex flex-col md:flex-row items-start md:items-center space-y-6 md:space-y-0 md:space-x-8">
-                       <div className="w-16 h-16 bg-[#1a4fba] rounded-full flex items-center justify-center flex-shrink-0">
-                           <img src={sixth} alt="" className="w-8 h-8"/>
-                       </div>
-                       <p className="flex-1 text-lg md:text-xl">
+                   <div className="flex  flex-row items-start items-center space-y-6 space-y-0 md:space-x-8 space-x-2">
+                           <img src={sixth} alt="" className="w-24 h-24  rounded-full"/>
+                       <p className="flex-1 text-sm sm:text-base md:text-xl">
                            We pride ourselves on having high standards, we don't take trust for granted. As a company Candour believes trust is earned, nurtured and reciprocated. Above all it's shown in what we do.
                        </p>
                    </div>

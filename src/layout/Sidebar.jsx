@@ -23,7 +23,7 @@ const Sidebar = () => {
   const location = useLocation();
   const [menuItems, setMenuItems] = useState([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [openSubItems, setOpenSubItems] = useState(false);
+  const [openSubItems, setOpenSubItems] = useState([]);
 
   // Your existing items arrays and useEffect remain the same
   const buyerItems = [
@@ -51,11 +51,39 @@ const Sidebar = () => {
       label: 'Messages',
     //   path: '/messages'
     },
-    // {
-    //   icon: BookmarkPlus,
-    //   label: 'Saved Suppliers',
-    // //   path: '/saved-suppliers'
-    // }
+    {
+      icon: BookmarkPlus,
+      label: 'Saved Suppliers',
+    //   path: '/saved-suppliers'
+    },
+    {
+        icon: Settings,
+        label: 'Settings',
+        // path: '/supplier/settings/profile',
+        subItems:[
+          {
+            icon: User,
+            label: 'Profile',
+            path: '/buyer/settings/profile'
+          },
+          {
+            icon: Settings,
+            label: 'Account settings',
+            path: '/buyer/settings/account'
+          },
+          {
+            icon: Bell,
+            label: 'Notification settings',
+            path: '/buyer/settings/notifications'
+          },
+          {
+            icon: Shield,
+            label: 'Security',
+            path: '/buyer/settings/security'
+          },
+       
+        ]
+      }
   ];
 
   const supplierItems = [
@@ -85,13 +113,13 @@ const Sidebar = () => {
     },
     {
       icon: BookmarkPlus,
-      label: 'Saved Suppliers',
+      label: 'Saved Buyers',
     //   path: '/saved-suppliers'
     },
     {
         icon: Settings,
         label: 'Settings',
-        path: '/supplier/settings/profile',
+        // path: '/supplier/settings/profile',
         subItems:[
           {
             icon: User,
@@ -132,8 +160,10 @@ const Sidebar = () => {
     const loginType = localStorage.getItem("loginType");
     if(loginType === "buyer") {
       setMenuItems(buyerItems);
+      setOpenSubItems(new Array(buyerItems.length).fill(false))
     } else if(loginType==='supplier') {
       setMenuItems(supplierItems);
+      setOpenSubItems(new Array(supplierItems.length).fill(false))
     } 
   }, []);
 
@@ -148,12 +178,13 @@ const Sidebar = () => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
+
+
   useEffect(()=>{
-    if(openSubItems){
-    const setSubItemFlag=localStorage.getItem("openSubItems")!==undefined ? localStorage.getItem("openSubItems") : localStorage.setItem("openSubItems",false)
-setOpenSubItems(setSubItemFlag)
+    if(localStorage.getItem("openSubItems")!==undefined && JSON.parse(localStorage.getItem("openSubItems"))){
+setOpenSubItems(JSON.parse(localStorage.getItem("openSubItems")))
     }
-  },[openSubItems])
+  },[])
 
 
   return (
@@ -203,11 +234,21 @@ setOpenSubItems(setSubItemFlag)
                 >
                   <item.icon className="w-5 h-5 mr-3" />
                   <span>{item.label}</span>
-                  {item.subItems && !openSubItems ? (
-                    <ChevronDown className="w-4 h-4 ml-auto" onClick={()=>setOpenSubItems(true)}/>
-                  ) : item.subItems &&  <ChevronUp className="w-4 h-4 ml-auto" onClick={()=>setOpenSubItems(false)}/> }
+                  {item.subItems && !openSubItems[index] ? (
+                    <ChevronDown className="w-4 h-4 ml-auto" onClick={()=>{
+                      const items=[...openSubItems];
+                      items[index]=true
+                      setOpenSubItems(items)
+                      localStorage.setItem("openSubItems",JSON.stringify(items))
+                    }}/>
+                  ) : item.subItems &&  <ChevronUp className="w-4 h-4 ml-auto" onClick={()=>{
+                    const items=[...openSubItems];
+                    items[index]=false
+                    setOpenSubItems(items)
+                    localStorage.setItem("openSubItems",JSON.stringify(items))
+                  }}/> }
                 </Link>
-                {openSubItems && item.subItems && (
+                {openSubItems[index] && item.subItems && (
                   <ul className="ml-8 mt-1 space-y-1">
                     {item.subItems.map((subItem, subIndex) => (
                       <li key={subIndex}>

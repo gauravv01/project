@@ -168,14 +168,14 @@ const ProcurementDashboard = () => {
 
           {/* Trending and Matches */}
           <div className="space-y-4 lg:space-y-6">
-            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm">
+            {/* <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm">
               <h3 className="font-semibold mb-4">Trending Live Deals</h3>
               <div className="space-y-4">
                 {trendingDeals.map((deal) => (
                   <UserCard key={deal.id} user={deal} />
                 ))}
               </div>
-            </div>
+            </div> */}
 
             <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm">
               <h3 className="font-semibold mb-4">Potential Matches</h3>

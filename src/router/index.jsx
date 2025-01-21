@@ -25,6 +25,12 @@ const SupplierSettingsNotifications=lazy(()=>import('../pages/Supplier/settings/
 const SupplierSettingsSecurity=lazy(()=>import('../pages/Supplier/settings/Security'));
 const SupplierSettingsPrivacy=lazy(()=>import('../pages/Supplier/settings/Privacy'));
 
+// buyer settings
+const BuyerSettingsProfile=lazy(()=>import('../pages/Buyer/settings/Profile'));
+const BuyerSettingsSecurity=lazy(()=>import('../pages/Buyer/settings/Security'));
+const BuyerSettingsAccount=lazy(()=>import('../pages/Buyer/settings/Accounts'));
+const BuyerSettingsNotifications=lazy(()=>import('../pages/Buyer/settings/Notifications'));
+
 const Router=()=>{
     return (
         <Suspense fallback={<Loader/>}>
@@ -49,6 +55,12 @@ const Router=()=>{
             <Route path='/supplier/settings/notifications' element={<SupplierSettingsNotifications/>}/>
             <Route path='/supplier/settings/billing' element={<SupplierSettingsBilling/>}/>
             <Route path='/supplier/settings/account' element={<SupplierSettingsAccount/>}/>
+
+            {/* buyer settings */}
+            <Route path='/buyer/settings/profile' element={<BuyerSettingsProfile/>}/>
+            <Route path='/buyer/settings/account' element={<BuyerSettingsAccount/>}/>
+            <Route path='/buyer/settings/security' element={<BuyerSettingsSecurity/>}/>
+            <Route path='/buyer/settings/notifications' element={<BuyerSettingsNotifications/>}/>
         </Routes>
         </Suspense>
     )

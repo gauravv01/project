@@ -29,7 +29,15 @@ const Layout = ({ children }) => {
               <img
                 src={NavIcon}
                 alt="User avatar"
-                className="w-8 h-8 rounded-full"
+                className="w-8 h-8 rounded-full cursor-pointer"
+                onClick={()=>{
+                  const loginType = localStorage.getItem("loginType");
+                  if(loginType==="buyer")
+                  navigate("/buyer/settings/profile")
+                else{
+                  navigate("/supplier/settings/profile")
+                }
+                }}
               />
               <span className="text-sm font-medium text-gray-700">John Doe</span>
             </div>
